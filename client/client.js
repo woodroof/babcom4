@@ -63,6 +63,15 @@ function clearMessages()
 
 function addMessage(message_number, type, name, message_text, on_click_function)
 {
+	if (type == 'change')
+	{
+		var change_checkbox = document.getElementById('change_checkbox');
+		if (!change_checkbox.checked)
+		{
+			return;
+		}
+	}
+
 	var message = document.createElement('div');
 	if (message_number != null)
 	{

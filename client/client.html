@@ -1,10 +1,6 @@
 <meta charset="utf-8">
 <script src="client.js"></script>
 <style>
-	.actions
-	{
-		margin-top: -0.3rem;
-	}
 	.clear_disabled
 	{
 		text-align: center;
@@ -14,6 +10,7 @@
 		width: 8rem;
 		box-sizing: border-box;
 		color: grey;
+		margin-left: 0.3rem;
 	}
 	.clear_enabled
 	{
@@ -23,6 +20,7 @@
 		height: 1.25rem;
 		width: 8rem;
 		box-sizing: border-box;
+		margin-left: 0.3rem;
 	}
 	.connect_disabled
 	{
@@ -133,7 +131,7 @@
 	.message_buttons
 	{
 		display: flex;
-		flex-direction: row-reverse;
+		justify-content: flex-end;
 	}
 	.message_change
 	{
@@ -201,12 +199,13 @@
 		width: 16rem;
 		margin-left: 0.3rem;
 		margin-top: 0.3rem;
-		border: 1px solid black;
+		border: 1px solid grey;
 	}
 	.object_name
 	{
 		font-weight: bold;
 		text-align: center;
+		border-bottom: 1px solid grey;
 	}
 	.object_content
 	{
@@ -268,6 +267,7 @@
 	<div class="runtime_data">
 		<div class="messages">
 			<div class="message_buttons">
+				<label><input type="checkbox" id="change_checkbox">change</label>
 				<div id="clear" class="clear_disabled">Очистить</div>
 			</div>
 			<div id="message_list"></div>
