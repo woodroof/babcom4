@@ -1,0 +1,278 @@
+<meta charset="utf-8">
+<script src="client.js"></script>
+<style>
+	.actions
+	{
+		margin-top: -0.3rem;
+	}
+	.clear_disabled
+	{
+		text-align: center;
+		border: 1px solid grey;
+		cursor: pointer;
+		height: 1.25rem;
+		width: 8rem;
+		box-sizing: border-box;
+		color: grey;
+	}
+	.clear_enabled
+	{
+		text-align: center;
+		border: 1px solid rgb(20, 108, 190);
+		cursor: pointer;
+		height: 1.25rem;
+		width: 8rem;
+		box-sizing: border-box;
+	}
+	.connect_disabled
+	{
+		text-align: center;
+		border: 1px solid grey;
+		cursor: pointer;
+		height: 1.25rem;
+		width: 8rem;
+		box-sizing: border-box;
+		color: grey;
+		margin-left: 1.2rem;
+	}
+	.connect_enabled
+	{
+		text-align: center;
+		border: 1px solid rgb(20, 108, 190);
+		cursor: pointer;
+		height: 1.25rem;
+		width: 8rem;
+		box-sizing: border-box;
+		margin-left: 1.2rem;
+	}
+	.client_id
+	{
+		border: 1px solid grey;
+		height: 1.25rem;
+		padding-left: 0.2em;
+		font-family: monospace;
+		margin-left: 0.6rem;
+		flex-grow: 1;
+	}
+	.client_id_current
+	{
+		border: 1px solid grey;
+		height: 1.25rem;
+		padding-left: 0.2em;
+		font-family: monospace;
+		margin-left: 0.6rem;
+		flex-grow: 1;
+		font-weight: bold;
+	}
+	.disconnect_disabled
+	{
+		text-align: center;
+		border: 1px solid grey;
+		cursor: pointer;
+		height: 1.25rem;
+		width: 8rem;
+		box-sizing: border-box;
+		color: grey;
+		margin-left: 0.3rem;
+	}
+	.disconnect_enabled
+	{
+		text-align: center;
+		border: 1px solid rgb(20, 108, 190);
+		cursor: pointer;
+		height: 1.25rem;
+		width: 8rem;
+		box-sizing: border-box;
+		margin-left: 0.3rem;
+	}
+	.function_call_disabled
+	{
+		text-align: center;
+		border: 1px solid grey;
+		cursor: pointer;
+		margin-top: 0.3rem;
+		height: 1.25rem;
+		color: grey;
+		box-sizing: border-box;
+	}
+	.function_call_enabled
+	{
+		text-align: center;
+		border: 1px solid rgb(20, 108, 190);
+		cursor: pointer;
+		margin-top: 0.3rem;
+		height: 1.25rem;
+		box-sizing: border-box;
+	}
+	.function_name
+	{
+		margin-top: 0.3rem;
+		border: 1px solid grey;
+		width: 100%;
+		height: 1.25rem;
+		padding-left: 0.2em;
+		font-family: monospace;
+	}
+	.function_params
+	{
+		margin-top: 0.3rem;
+		width: 100%;
+		height: 20%;
+		font-family: monospace;
+	}
+	.generate_client_id
+	{
+		text-align: center;
+		border: 1px solid rgb(20, 108, 190);
+		cursor: pointer;
+		height: 1.25rem;
+		width: 8rem;
+		box-sizing: border-box;
+		margin-left: 0.3rem;
+	}
+	.message_buttons
+	{
+		display: flex;
+		flex-direction: row-reverse;
+	}
+	.message_change
+	{
+		margin-top: 0.3rem;
+		padding-left: 0.2em;
+		border: 1px solid rgb(20, 108, 190);
+	}
+	.message_clear
+	{
+		margin-top: 0.3rem;
+		padding-left: 0.2em;
+		border: 1px solid rgb(20, 108, 190);
+		background-color: #ffc3c3;
+	}
+	.message_connect
+	{
+		margin-top: 0.3rem;
+		padding-left: 0.2em;
+		border: 1px solid grey;
+		color: grey;
+	}
+	.message_connect_confirmed
+	{
+		margin-top: 0.3rem;
+		padding-left: 0.2em;
+		border: 1px solid rgb(20, 108, 190);
+		background-color: #d4ffdd;
+	}
+	.message_function_call
+	{
+		margin-top: 0.3rem;
+		padding-left: 0.2em;
+		border: 1px solid grey;
+		color: grey;
+		cursor: pointer;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.message_function_call_confirmed
+	{
+		margin-top: 0.3rem;
+		padding-left: 0.2em;
+		border: 1px solid rgb(20, 108, 190);
+		cursor: pointer;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		background-color: #bce0ff;
+	}
+	.messages
+	{
+		margin-top: 0.3rem;
+		width: 16rem;
+	}
+	.objects
+	{
+		flex-grow: 1;
+		display: flex;
+		align-items: flex-start;
+	}
+	.object
+	{
+		display: inline-block;
+		width: 16rem;
+		margin-left: 0.3rem;
+		margin-top: 0.3rem;
+		border: 1px solid black;
+	}
+	.object_name
+	{
+		font-weight: bold;
+		text-align: center;
+	}
+	.object_content
+	{
+		padding: 0.2rem;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	.runtime_data
+	{
+		display: flex;
+	}
+	.separator
+	{
+		height: 1px;
+		background-color: grey;
+		margin: 0.3rem -0.3rem 0 -0.3rem;
+	}
+	.server
+	{
+		display: flex;
+	}
+	.url
+	{
+		border: 1px solid grey;
+		height: 1.25rem;
+		padding-left: 0.2em;
+		font-family: monospace;
+		flex-grow: 1;
+	}
+	.url_current
+	{
+		border: 1px solid grey;
+		height: 1.25rem;
+		padding-left: 0.2em;
+		font-family: monospace;
+		flex-grow: 1;
+		font-weight: bold;
+	}
+
+	body
+	{
+		margin: 0.3rem;
+	}
+</style>
+<body onload="init()">
+	<div class="server">
+		<input type="text" id="url" class="url" oninput="urlChanged()" />
+		<input type="text" id="client_id" class="client_id" oninput="clientIdChanged()" />
+		<div class="generate_client_id" onclick="generateClientId()">Сгенерировать</div>
+		<div id="connect" class="connect_disabled">Подключиться</div>
+		<div id="disconnect" class="disconnect_disabled">Отключиться</div>
+	</div>
+	<div class="separator"></div>
+	<input type="text" id="function_name" class="function_name" value="function_name" oninput="updateFunctionCallStyle()" />
+	<textarea class="function_params" id="function_params" oninput="updateFunctionCallStyle()">{}</textarea>
+	<div class="function_call_disabled" id="function_call">Выполнить функцию</div>
+	<div class="separator"></div>
+	<div class="runtime_data">
+		<div class="messages">
+			<div class="message_buttons">
+				<div id="clear" class="clear_disabled">Очистить</div>
+			</div>
+			<div id="message_list"></div>
+		</div>
+		<div class="objects" id="objects">
+		</div>
+	</div>
+</body>
